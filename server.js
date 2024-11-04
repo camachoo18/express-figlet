@@ -2,7 +2,7 @@ const express = require("express")
 const { exec } = require('child_process');
 
 
-const comando = "cat >> hola.txt";
+const comando = "figlet hola mundo";
 const app = express()
 const port = 3000
 
@@ -13,7 +13,7 @@ app.get("/", (req, res) =>{
     exec (comando, (error, stdout, stderr)=>{
         console.log(error, stdout, stderr)
         console.log(`Stdout: ${stdout}`);
-        res.send(stdout)
+        res.send(`<pre>${stdout}</pre>`);
     })
 })
 
