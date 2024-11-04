@@ -1,7 +1,7 @@
 const express = require("express")
 const { exec } = require('child_process');
 const { quote } = require('shell-quote');
-
+const RateLimit = require('express-rate-limit');
 
 
 //const comando = "figlet hola mundo";
@@ -10,6 +10,14 @@ const port = 3000
 
 
 app.use(express.static("public"))
+
+// set up rate limiter: maximum of 100 requests per 15 minutes
+const limiter = RateLimit({
+    windowMs: 15 * 60 * 1000, // 15 minutes
+    max: 100, // max 100 requests per windowMs
+});
+
+app.use(limiter);
 
 app.get("/", (req, res) =>{
     exec (comando, (error, stdout, stderr)=>{
