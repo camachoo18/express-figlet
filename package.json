@@ -20,6 +20,7 @@
   "homepage": "https://github.com/camachoo18/express-figlet#readme",
   "dependencies": {
     "express": "^4.21.1",
-    "shell-quote": "^1.8.1"
+    "shell-quote": "^1.8.1",
+    "express-rate-limit": "^7.4.1"
   }
 }
