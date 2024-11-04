@@ -2,7 +2,6 @@ const express = require("express")
 const { exec } = require('child_process');
 
 
-
 const comando = "cat >> hola.txt";
 const app = express()
 const port = 3000
