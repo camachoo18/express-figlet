@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Hola mundo</h1>
+    <h2>Ping a un Dominio</h2>
+    <form id="pingForm">
+        <label for="dominio">Dominio:</label>
+        <input type="text" id="dominio" name="dominio" placeholder="Ejemplo: youtube.com" required>
+        <button type="submit">Hacer Ping</button>
+    </form>
+    <div id="result"></div>
+
+    <script>
+        document.getElementById('pingForm').addEventListener('submit', async (event) => {
+            event.preventDefault(); // Prevenir el comportamiento por defecto del formulario
+
+            const dominio = document.getElementById('dominio').value;
+            const response = await fetch(`/ping?dominio=${encodeURIComponent(dominio)}`);
+            const data = await response.text();
+            
+            document.getElementById('result').innerHTML = `<pre>${data}</pre>`;
+        });
+    </script>
+</body>
+</html>
